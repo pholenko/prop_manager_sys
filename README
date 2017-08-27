@@ -1,0 +1,25 @@
+Build and Run from Gradle:
+1) ./gradlew build && java -jar build/libs/prop_manager_sys-0.0.1-SNAPSHOT.jar
+
+
+Build and Tag Docker image and then run:
+1)  docker build -f Dockerfile -t prop_manager_sys .
+3)  docker run -p 8080:8080 prop_manager_sys
+
+
+Delete all untagged images:
+1)docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
+
+
+
+Use this Json for filtering:
+
+POST http://localhost:8080/reservations/filter
+{
+	"startDateFrom" : "2017-08-27 19:08:42",
+	"startDateTo" : "2017-08-27 23:07:48",
+	"endDateFrom" : "2017-08-27 19:09:42",
+	"endDateTo" : "2017-08-27 23:07:48",
+	"pageNumber" : "1",
+	"pages" : "5"
+}
